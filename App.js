@@ -1,43 +1,62 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-// Manipulate the HTML DOM using Javscript
-// const heading = document.createElement("h1");
-// heading.innerHTML = "Namaste Everyone";
-// const root = document.getElementById("root");
-// root.appendChild(heading);
+const Header = () => {
+  return (
+    <div className="header">
+      <div className="logo-container">
+        <img
+          className="logo"
+          alt="logo"
+          src="https://www.logodesign.net/logo/smoking-burger-with-lettuce-3624ld.png?nwm=1&nws=1&industry=fast-food&sf=&txt_keyword=All"
+        />
+      </div>
+      <div className="nav-items">
+        <ul>
+          <li>Home</li>
+          <li>About Us</li>
+          <li>Contact Us</li>
+          <li>Cart</li>
+        </ul>
+      </div>
+    </div>
+  );
+};
+const RestaurantCard = (props) => {
+  console.log(props);
+  return(
+    <div className="res-card">
+      <img className="card-img" src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_264,h_288,c_fill/iwtylmgmcnw6qm5eh3qv" alt="card-image"/>
+        <h3>{props.resName}</h3>
+        <h4>{props.cuisine}</h4>
+        <h4>4.4 stars</h4>
+        <h4>38 minutes</h4>
+    </div>
+  );
+};
+const Body = () => {
+  return(
+    <div className="body">
+      <div className="search">Search</div>
+      <div className="res-container">
+       <RestaurantCard resName="Meghna Foods" cuisine="Momos Asian Indian Momos"/>
+       <RestaurantCard resName="KFC" cuisine="Burger,Fast Food"/>
+       <RestaurantCard/>
+       
+      </div>
+    </div>
+  );
+};
 
-// Manipulate the HTML DOM using React
 
-// Create nested React Elements
-const heading = React.createElement(
-    "h1",
-    {
-      id: "title",
-      style: {
-        background:"red",
-      },
-      className:"title"
-    },
-    "This is Heading"
+const AppLayout = () => {
+  return (
+    <div className="app">
+      <Header />
+      <Body/>
+    </div>
   );
-  const heading1 = React.createElement(
-    "h1",
-    {
-      id: "title",
-    },
-    "This is heading1"
-  );
-  
-  const container = React.createElement(
-    "div",
-    {
-      id: "container",
-    },
-    [heading, heading1]
-  );
-  
-  // create root using createRoot
-  const root = ReactDOM.createRoot(document.getElementById("root"));
-  // passing react element inside root
-  root.render(container);
+};
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<AppLayout />);
